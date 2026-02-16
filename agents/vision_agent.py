@@ -16,7 +16,8 @@ def build_vision_agent_and_task(image_path):
         verbose=True,
         llm=build_new_llm_client(0.1),
         tools=[vision_tool],
-        allow_delegation=True
+        allow_delegation=True,
+        max_iter=30
     )
 
     return Task(

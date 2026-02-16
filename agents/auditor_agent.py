@@ -33,7 +33,8 @@ def build_auditor_agent_and_task(image_path, vision_task):
         tools=[vision_tool],
         llm=build_new_llm_client(0.1),
         allow_delegation=True,
-        verbose=True
+        verbose=True,
+        max_iter=30
     )
 
     return Task(

@@ -61,6 +61,7 @@ If a box contains multiple sub-icons (like the Backend Systems box), you MUST ex
 **PASS 2: STRUCTURAL SYMMETRY & ANOMALIES**
 - **The Redundancy Check:** In Multi-AZ or Multi-Region architectures, look for repeated clusters. If Zone A has a "Compute" icon and Zone B has an identical icon, both MUST be in the JSON.
 - **The Anomaly Hunt:** Look specifically for "Specialized Zones." If one sub-container contains an extra icon that its peers do not (e.g., a unique search engine or a legacy server), verify its inclusion. Missing these "Outliers" is a critical failure.
+- **API Management:** typically includes an API Gateway and a developer portal; ensure that if it exists in the image, it has been correctly located.
 
 **PASS 3: LABEL & HIERARCHY INTEGRITY**
 - **The "Literal Label" Rule:** Check that `name` fields match the exact text in the diagram.
@@ -70,6 +71,7 @@ If a box contains multiple sub-icons (like the Backend Systems box), you MUST ex
 
 - **Entry-Point Integrity:** Trace the path from the "User" or "Internet" icon. Ensure every "hop" (WAF, CDN, Shield, Load Balancer) is recorded in the `flows` list.
 - **Data Layer Closure:** A flow is incomplete if it stops at the Load Balancer. Ensure connections reach the internal Application Servers and then the final Data Layer (Databases, Cache, File Systems).
+- 
 
 ### 3. DELEGATION GUIDELINES
 

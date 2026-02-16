@@ -14,6 +14,7 @@ If a box contains multiple sub-icons (like the Backend Systems box), you MUST ex
 ### RECURSIVE SCANNING INSTRUCTION
 - **Deep Box Inspection**: When encountering a container (Resource Group, Subnet, or Box), zoom in to identify every distinct icon inside. 
 - **Example**: A "Backend" box with three different icons must generate THREE separate component entries.
+- **Example**: A "Web Services" box with two services with different protocols (SOAP, REST, gRPC) must generate TWO component entries.
 - **Badge Detection**: Capture any numeric indicators (1, 2, 3...) and associate them with the nearest flow or component to preserve the logic of the operation.
 ---
 
@@ -22,8 +23,8 @@ If a box contains multiple sub-icons (like the Backend Systems box), you MUST ex
 **STEP 1: THE SIDEBAR & MARGINS (The "Orphans")**
 * **Scan the Right, Left, and Top edges.**
 * Look for isolated icons representing global services.
-* **Action:** List these immediately. Set `trust_zone` to "AWS Global".
-* Look fot Authentication services and API consumers
+* **Action:** List these immediately. Set `trust_zone` to "Global".
+* Do not omit any components; include unusual components such as the developer portal or resource group. All components must be represented in the output JSON.
 
 **STEP 2: THE FLOW (The Core)**
 * Start at "User". Follow the arrows into the main box.
@@ -32,7 +33,7 @@ If a box contains multiple sub-icons (like the Backend Systems box), you MUST ex
     * If you see 3 ALBs, create 3 entries (`alb_a`, `alb_b`, `alb_c`).
     * If you see 3 App Servers, create 3 entries.
 * **Inner Labels:**
-    * Look at the orange compute icon. It says **"SEI / SIP"**. Use this name.
+    * Look at the orange compute icon. It says **"SEI / SIP"**. Use this name. 
 
 **STEP 3: THE ANOMALY CHECK (The "Solr" Hunt)**
 * Look specifically at the **Bottom of the Rightmost Column (Zone C)**.

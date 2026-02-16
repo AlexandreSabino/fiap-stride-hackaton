@@ -40,7 +40,7 @@ def identify_all_components(image_path):
     crew = Crew(
         agents=[vision_task.agent, agent_auditor.agent],
         tasks=[vision_task, agent_auditor],
-        verbose=True
+        verbose=True,
     )
     result = crew.kickoff()
     architecture_data = result.pydantic
