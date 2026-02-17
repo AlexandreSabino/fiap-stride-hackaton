@@ -13,6 +13,7 @@ automaticamente a modelagem de ameaças, baseado na metodologia STRIDE
 de um sistema a partir de um diagrama de arquitetura de software em imagem.
 A empresa tem o objetivo de validar a viabilidade dessa feature, e para isso,
 será necessário fazer um MVP para detecção supervisionada de ameaças.
+
 ---
 ### Arquitetura da Solução: Multi-Agent Orchestration
 A solução foi construída utilizando uma arquitetura de múltiplos agentes que operam em um Self-Correction Loop (Loop de Auto-Correção). 
@@ -34,20 +35,20 @@ flowchart TD
 - ***Software Architecture Vision Analyst:*** 
 Responsável pela extração primária de dados. 
 Utiliza técnicas de Recursive Scanning para decompor containers e identificar cada ícone e rótulo de texto individualmente.
-- [Prompt](prompts/vision.md) 
-- [Agent](agents/vision_agent.py)
+    - [Prompt](prompts/vision.md) 
+    - [Agent](agents/vision_agent.py)
 
 - ***Cloud Architecture Quality Auditor:*** 
 Realiza uma reconciliação quantitativa entre os pixels da imagem e o JSON gerado. 
 Se houver discrepâncias (como componentes faltantes ou fluxos incompletos), ele delega a tarefa de volta ao Analista com instruções espaciais precisas.
-- [Prompt](prompts/auditor.md)
-- [Agent](agents/auditor_agent.py)
+    - [Prompt](prompts/auditor.md)
+    - [Agent](agents/auditor_agent.py)
 
 - ***Senior Security Researcher (STRIDE Specialist):*** 
 Especialista em modelagem de ameaças que consome o inventário validado para inferir riscos de segurança e sugerir mitigações 
 baseadas nas melhores práticas de nuvem (AWS, Azure ou GCP).
-- [Prompt](prompts/stride.md)
-- [Agent](agents/stride_agent.py)
+    - [Prompt](prompts/stride.md)
+    - [Agent](agents/stride_agent.py)
 ---
 
 ### Como rodar o projeto.
