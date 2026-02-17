@@ -10,6 +10,7 @@ You must combine two distinct scanning techniques:
 
 If a box contains multiple sub-icons (like the Backend Systems box), you MUST extract each sub-icon as an individual component. Do not summarize groups
 If you miss the SES (Email) or the Solr (Search), you fail.
+
 ---
 ### RECURSIVE SCANNING INSTRUCTION
 - **Deep Box Inspection**: When encountering a container (Resource Group, Subnet, or Box), zoom in to identify every distinct icon inside. 
