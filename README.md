@@ -39,7 +39,7 @@ flowchart TD
     ***Passo 1: Reconhecimento Periférico***
   
     Antes de entrar no "coração" da arquitetura, o agente foca nas bordas da imagem.
-    - Margens e Bordas: Ele escaneia as extremidades direita, esquerda e superior em busca de serviços globais ou transversais que não possuem setas de fluxo direto (como AWS KMS, CloudTrail ou SES).
+    - Margens e Bordas: Ele escaneia as extremidades direita, esquerda e superior em busca de serviços globais ou transversais que não possuem setas de fluxo direto.
     - Contexto Global: Esses itens são classificados imediatamente com a trust_zone como "Global", servindo de base para análises de conformidade e log.
     
     ***Passo 2: Mapeamento do Núcleo***
@@ -122,13 +122,46 @@ flowchart TD
     - Comando de Reexecução: Ele ordena explicitamente que o Analyst re-escaneie aquela área e atualize o inventário.
       
 ---
-- ***Senior Security Researcher (STRIDE Specialist):*** 
-Especialista em modelagem de ameaças que consome o inventário validado para inferir riscos de segurança e sugerir mitigações 
-baseadas nas melhores práticas de nuvem (AWS, Azure ou GCP).
+- ### Senior Security Researcher (STRIDE Specialist): ###
+    Especialista em modelagem de ameaças que consome o inventário validado para inferir riscos de segurança e sugerir mitigações 
+    baseadas nas melhores práticas de nuvem (AWS, Azure ou GCP).
     - [Prompt](prompts/stride.md)
     - [Agent](agents/stride_agent.py)
----
 
+  O agente opera como um arquiteto de segurança sênior, seguindo um processo de dedução lógica e priorização de riscos.
+
+  ***1. Ingestão (Vínculo Estrito)***
+    O primeiro passo é o mais crítico para a confiabilidade do sistema:
+    - Fidelidade ao Inventário: O agente é terminantemente proibido de assumir a existência de componentes que não estejam no JSON validado pelo Auditor.
+    - Neutralidade de Visão: Mesmo que o modelo de linguagem tenha "visto" um componente na imagem original, se ele não passou pelo crivo do Auditor, o Pesquisador o ignora para evitar alucinações no relatório final.
+
+   ***2. Mapeamento de Ameaças (Framework STRIDE)***
+
+    Para cada componente e cada fluxo de dados, o agente realiza uma varredura mental através dos seis pilares do STRIDE:
+  
+    - ***S (Spoofing):*** Falsificação de Identidade - Analisa pontos de entrada e identidades (IAM/Endpoint).
+    - ***T (Tampering):*** Violação / Alteração de Dados (Alterar parâmetros de uma requisição) - Avalia a integridade dos dados em trânsito (protocolos como HTTP vs HTTPS) e em repouso.
+    - ***R (Repudiation):*** Alguém nega ter feito uma ação e não há como provar o contrário. - Verifica se há serviços de log e rastreabilidade (como CloudTrail) para evitar a negação de ações.
+    - ***I (Information Disclosure):*** Divulgação de Informação - Foca em exposição de sub-redes públicas e sensibilidade de dados.
+    - ***D (Denial of Service):*** Ataque de sobrecarga - Examina limites de infraestrutura e proteções de borda (WAF/Shield).
+    - ***E (Elevation of Privilege)***: Usuário ganha mais permissões do que deveria - Revisa permissões de acesso e políticas de menor privilégio.
+
+    ***3. Inferência Contextual e Risco Transversal***
+  
+    Como diagramas raramente detalham todas as configurações, o agente utiliza padrões de design para inferir vulnerabilidades:
+    - Padrões de Exposição: Se um componente está em uma Public Zone, o agente automaticamente eleva o risco para DoS e Spoofing.
+    - Análise de Salto (Flow Analysis): O agente analisa a relação entre componentes.
+ 
+    ***Estrutura e Entrega do Relatório***
+    O agente finaliza seu trabalho consolidando as descobertas em um relatório estruturado em Português, garantindo que a comunicação técnica seja clara para os stakeholders locais.
+    | Campo do Relatório        | Descrição Técnica |
+    |--------------------------|------------------|
+    | Categoria de Ameaça      | Identificação clara dentro do acrônimo STRIDE |
+    | Descrição do Risco       | Explicação detalhada de como a ameaça se aplica àquele componente ou fluxo específico |
+    | Impacto                  | Classificação entre Alto, Médio ou Baixo para auxiliar na priorização |
+    | Mitigação Recomendada    | Guia passo a passo com as melhores práticas (ex: "Habilitar Criptografia KMS") |
+
+---
 ### Como rodar o projeto.
 
 1. Utilize o python na versão: 3.11.9
