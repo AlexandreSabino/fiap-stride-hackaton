@@ -2,16 +2,11 @@
 
 ---
 ### Desafio: Modelagem de ameaças utilizando IA
-A FIAP Software Security, empresa de Segurança de Sistemas, está
-analisando a viabilidade de uma nova funcionalidade para otimizar seu
-software de análise de vulnerabilidades em arquitetura de sistemas.
-O objetivo da empresa é usar novas tecnologias para identificar e tratar
-vulnerabilidades que possam colocar em risco a segurança dos sistemas
-criados por arquitetos(as) e desenvolvedores(as).
-Um dos desafios é utilizar Inteligência Artificial para realizar
-automaticamente a modelagem de ameaças, baseado na metodologia STRIDE
-de um sistema a partir de um diagrama de arquitetura de software em imagem.
-A empresa tem o objetivo de validar a viabilidade dessa feature, e para isso,
+A FIAP Software Security, empresa de Segurança de Sistemas, está analisando a viabilidade de uma nova funcionalidade para otimizar seu
+software de análise de vulnerabilidades em arquitetura de sistemas. O objetivo da empresa é usar novas tecnologias para identificar e tratar
+vulnerabilidades que possam colocar em risco a segurança dos sistemas criados por arquitetos(as) e desenvolvedores(as).
+Um dos desafios é utilizar Inteligência Artificial para realizar automaticamente a modelagem de ameaças, baseado na metodologia STRIDE
+de um sistema a partir de um diagrama de arquitetura de software em imagem. A empresa tem o objetivo de validar a viabilidade dessa feature, e para isso,
 será necessário fazer um MVP para detecção supervisionada de ameaças.
 
 ---
@@ -22,7 +17,7 @@ Essa abordagem garante que a IA não apenas "descreva" a imagem, mas realize uma
 flowchart TD
     software_architecture_vision_analyst --> cloud_architecture_quality_auditor
     cloud_architecture_quality_auditor -->  software_architecture_vision_analyst
-    cloud_architecture_quality_auditor --> senior_Security_researcher
+    cloud_architecture_quality_auditor --> senior_security_researcher
 ```
 ---
 ### Tecnologia e frameworks.
