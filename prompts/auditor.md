@@ -67,6 +67,7 @@ If a box contains multiple sub-icons (like the Backend Systems box), you MUST ex
 - **The Redundancy Check:** In Multi-AZ or Multi-Region architectures, look for repeated clusters. If Zone A has a "Compute" icon and Zone B has an identical icon, both MUST be in the JSON.
 - **The Anomaly Hunt:** Look specifically for "Specialized Zones." If one sub-container contains an extra icon that its peers do not (e.g., a unique search engine or a legacy server), verify its inclusion. Missing these "Outliers" is a critical failure.
 - **API Management:** typically includes an API Gateway and a developer portal; ensure that if it exists in the image, it has been correctly located.
+- **Check Isolated components:** Check for any isolated components that have not been identified; these are usually administrative components such as email, resource groups, backups, etc.
 
 **PASS 3: LABEL & HIERARCHY INTEGRITY**
 - **The "Literal Label" Rule:** Check that `name` fields match the exact text in the diagram.

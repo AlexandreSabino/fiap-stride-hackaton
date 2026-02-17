@@ -24,7 +24,10 @@ If you miss the SES (Email) or the Solr (Search), you fail.
 
 **STEP 1: THE SIDEBAR & MARGINS (The "Orphans")**
 * **Scan the Right, Left, and Top edges.**
-* Look for isolated icons representing global services.
+* Look for isolated icons representing global services. Example:
+    * **Email:** Amazon SES (Envelope icon).
+    * **Security:** KMS (Key), Shield, WAF.
+    * **Ops:** CloudTrail, CloudWatch, Backup.
 * **Action:** List these immediately. Set `trust_zone` to "Global".
 * Do not omit any components; include unusual components such as the developer portal or resource group. All components must be represented in the output JSON.
 
